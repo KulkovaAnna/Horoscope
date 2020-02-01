@@ -21,7 +21,6 @@ horoscopes.map(elem => {
 
     circleIt(items, 40, itemRadius);
     items.forEach(item=>{
-        const itemImage = item.querySelector("img");
         item.addEventListener('click', ()=>{
             circleIt(items, 60, itemRadius);
             messageBox.textContent = "Поздравляю, " + itemImage.getAttribute("alt") + ", ты балбес!";
