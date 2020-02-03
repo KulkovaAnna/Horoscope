@@ -74,7 +74,7 @@ horoscopes.map(elem => {
 
     for(let i = 0; i < items.length; i++){
         items[i].addEventListener('click', ()=>{
-            circleIt(items, 60, itemRadius);
+            circleIt(items, 52, itemRadius);
             messageBox.style.display = "flex";
             messageBox.querySelector('h1').textContent = items[i].querySelector('img').getAttribute('alt');
             messageBox.querySelector('p').textContent = setMessage("zodiac"+i);
