@@ -45,6 +45,25 @@ function getRandomElement (array){
     const rand = Math.floor(Math.random()*array.length);
     return array[rand];
 }
+function setMessage(zodiac){
+    let result = JSON.parse(localStorage.getItem(zodiac));
+    const date = new Date;
+    if (!localStorage.getItem(zodiac) || ((Number(result.day) < Number(date.getDate())) &&
+        (Number(result.month) <= Number(date.getMonth()))&&
+        (Number(result.year) <= Number(date.getFullYear())))){
+        const message = getRandomElement(firstChapter) + getRandomElement(secondChapter) + getRandomElement(thirdChapter);
+        localStorage.setItem(zodiac, JSON.stringify({
+            'message': message,
+            'day': date.getDate(),
+            'month': date.getMonth(),
+            'year': date.getFullYear()}));
+        result = message;
+    }
+    else {
+        result = JSON.parse(localStorage.getItem(zodiac)).message;
+    }
+    return result;
+}
 horoscopes.map(elem => {
     let items = [...elem.getElementsByClassName('circular-box__item')];
     const itemRadius = items[0].offsetWidth/elem.offsetWidth/2;
@@ -52,13 +71,13 @@ horoscopes.map(elem => {
     messageBox.style.width =  innerCircleDiameter/Math.sqrt(2) + 'px';
     messageBox.style.height = innerCircleDiameter/Math.sqrt(2) + 'px';
     circleIt(items, 40, itemRadius);
-    items.forEach(item=>{
-        item.addEventListener('click', ()=>{
+
+    for(let i = 0; i < items.length; i++){
+        items[i].addEventListener('click', ()=>{
             circleIt(items, 60, itemRadius);
             messageBox.style.display = "flex";
-            messageBox.querySelector('h1').textContent = item.querySelector('img').getAttribute('alt');
-            messageBox.querySelector('p').textContent = getRandomElement(firstChapter) + getRandomElement(secondChapter) + getRandomElement(thirdChapter);
+            messageBox.querySelector('h1').textContent = items[i].querySelector('img').getAttribute('alt');
+            messageBox.querySelector('p').textContent = setMessage("zodiac"+i);
         })
-    });
-
+    }
 });
