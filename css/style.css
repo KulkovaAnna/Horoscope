@@ -2,7 +2,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh; }
+  height: 100vh;
+  font-family: Roboto, Arial, serif; }
 
 .circular-box {
   position: relative;
@@ -20,26 +21,37 @@ body {
   justify-content: center;
   width: 16%;
   height: 16%;
+  transition: all 1s ease 0s;
   font-size: 12px; }
+  .circular-box__item:hover {
+    cursor: pointer;
+    transform: scale(1.1); }
   .circular-box__item img {
     padding: 0;
     margin: 0;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    outline: none; }
+    outline: none;
+    transition: all 2s ease 0s; }
+    .circular-box__item img:hover {
+      box-shadow: 0 0 10px darkslateblue; }
   .circular-box__item figure {
     padding: 0;
     margin: 0; }
+  .circular-box__item figcaption {
+    font-weight: bold; }
 
 #message-box {
   position: absolute;
   display: none;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap; }
-  #message-box p, #message-box h1 {
-    text-align: center;
+  flex-flow: column;
+  text-align: center; }
+  #message-box h1 {
     margin: 0; }
+  #message-box h3 {
+    margin-top: 0; }
 
 /*# sourceMappingURL=style.css.map */

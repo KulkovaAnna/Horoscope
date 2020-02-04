@@ -26,8 +26,6 @@ const thirdChapter = [" Скоро Вы увидите значительные 
 "В общем и целом лучше занять оборонительную позицию и беречь то, что Вы уже имеете.",
 " Если у Вас есть хорошая идея, самое время реализовать ее."];
 
-
-
 const horoscopes = [...document.getElementsByClassName('circular-box')];
 const messageBox = document.getElementById("message-box");
 function circleIt (items, circleRadius, itemRadius){
@@ -77,6 +75,7 @@ horoscopes.map(elem => {
             circleIt(items, 52, itemRadius);
             messageBox.style.display = "flex";
             messageBox.querySelector('h1').textContent = items[i].querySelector('img').getAttribute('alt');
+            messageBox.querySelector('h3').textContent = '('+items[i].querySelector('figcaption').textContent+')';
             messageBox.querySelector('p').textContent = setMessage("zodiac"+i);
         })
     }
